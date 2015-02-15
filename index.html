@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Completely Digital Clips</title>
+
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="./lib/mediaelementplayer.css" />
+</head>
+
+<body>
+
+  <h1>Completely Digital Clips - Piano Cat</h1>
+
+  <video src="piano_cat.mp4" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
+
+  <script>
+    $( document ).ready(function() {
+        var v = document.getElementsByTagName("video")[0];
+        new MediaElement(v, {success: function(media) {
+            media.play();
+        }});
+    });
+  </script>
+
+</body>
+</html>
