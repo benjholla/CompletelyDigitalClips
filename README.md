@@ -10,6 +10,8 @@ This is an intentionally insecure web app!  It goes without saying that this sho
 
 ` sudo apt-get install git`
 
+`sudo apt-get install apache2`
+
 ## Checkout Source
 
 `git clone https://github.com/benjholla/BadYoutubeClone.git`
