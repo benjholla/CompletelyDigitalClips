@@ -12,6 +12,8 @@ This is an intentionally insecure web app!  It goes without saying that this sho
 
 `sudo apt-get install apache2`
 
+`sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql`
+
 ## Checkout Source
 
 `git clone https://github.com/benjholla/BadYoutubeClone.git`
