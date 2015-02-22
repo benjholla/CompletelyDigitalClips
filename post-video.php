@@ -1,3 +1,6 @@
+<?php
+  include 'headers.php';
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,6 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/carousel.css" rel="stylesheet">
-
     <script src="/lib/jquery.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
   </head>
@@ -62,18 +64,32 @@
     <br />
     <div class="container marketing">
      <hr class="featurette-divider">
-     <h1>Terms of Service</h1>
-     <p>By browsing this site or using our services you have agreed to the following terms of service.</p>
-     <ul>
-       <li>Don't hack us.</li>
-       <li>We are not liable for your mistakes.</li>
-       <li>Terms of service are subject to change at anytime without notice.</li>
-     </ul>
-      <!-- FOOTER -->
-      <hr class="featurette-divider">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; <?php echo date("Y"); ?> Completely Digital Clips &middot; <a href="/privacy.php">Privacy</a> &middot; <a href="/terms.php">Terms</a></p>
+     <h1>Post Video</h1>
+     <br />
+     <font face="verdana" color="red">
+     <?php 
+        if(isset($_GET["message"])) {
+          echo "<p>Post Failed</p>";
+          echo "<p>" . $_GET["message"] . "</p>";
+        }
+     ?>
+     </font>
+     <form name=registration action="create-video.php" method="post" enctype="multipart/form-data" onSubmit="return checkRegistration();">
+       <label for="title">Title</label><br />
+       <input type="text" name="title"><br />
+       <br />
+       <label for="description">Description</label><br />
+       <textarea name="description"></textarea>
+       <br />
+       <input type="file" name="file-upload" id="file-upload">
+       <br />
+       <input value="Post" type="submit">
+     </form>
+     <br />
+     <!-- FOOTER -->
+     <hr class="featurette-divider">
+     <footer>
+       <p>&copy; <?php echo date("Y"); ?> Completely Digital Clips &middot; <a href="/privacy.php">Privacy</a> &middot; <a href="/terms.php">Terms</a></p>
       </footer>
     </div>
   </body>
