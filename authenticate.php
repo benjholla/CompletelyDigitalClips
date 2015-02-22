@@ -20,10 +20,12 @@ $login = mysql_num_rows($result) > 0;
 if($login){
   // set an active cookie for this username
   setcookie("PHPSESSID", authenticated_session($email), time()+3600);
+  setcookie("user", $email, time()+3600);
   header('Location: /index.php');
 } else {
   // logout
   setcookie("PHPSESSID", authenticated_session($email), time()-3600);
+  setcookie("user", $email, time()-3600);
   header('Location: /login.php?message=Login%20Failed');
 }
 

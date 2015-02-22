@@ -1,6 +1,19 @@
 <?php
-  include 'headers.php';
-?> 
+include 'headers.php';
+include 'config.php';
+
+// open connection to the database
+include 'opendb.php';
+
+$clip = NULL;
+$mediaDir = $targetDir;
+$video = $_GET["video"];
+foreach ($validMediaExtensions as $ext){
+  if(file_exists("$baseDir/$targetDir/$video.$ext")){
+    $clip = "$video.$ext";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,17 +81,20 @@
      <hr class="featurette-divider">
      
      <center>
+     <?php if($clip): ?>
      <h1>Piano Cat</h1>
-     <video src="/media/piano_cat.mp4" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
-
-  <script>
-    $( document ).ready(function() {
-        var v = document.getElementsByTagName("video")[0];
-        new MediaElement(v, {success: function(media) {
-            media.play();
-        }});
-    });
-  </script>
+     <video src="<?php echo "$mediaDir/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
+     <script>
+	    $(document).ready(function() {
+		var v = document.getElementsByTagName("video")[0];
+		new MediaElement(v, {success: function(media) {
+		    media.play();
+		}});
+	    });
+      </script>
+      <?php else: ?>
+      <h1>Sorry, we couldn't find that clip :(</h1>
+      <?php endif; ?>
       </center>
       <!-- FOOTER -->
       <hr class="featurette-divider">

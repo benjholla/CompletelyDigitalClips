@@ -1,6 +1,7 @@
 <?php
   include 'headers.php';
 ?> 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,10 +25,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/carousel.css" rel="stylesheet">
-
     <script src="/lib/jquery.js"></script>
-    <script src="/lib/mediaelement-and-player.min.js"></script>
-    <link rel="stylesheet" href="./lib/mediaelementplayer.css" />
     <script src="/static/js/bootstrap.min.js"></script>
   </head>
 <!-- NAVBAR
@@ -51,8 +49,8 @@
               <ul class="nav navbar-nav">
                 <li><a href="/index.php">Home</a></li>
                 <?php if(isset($_COOKIE["PHPSESSID"])): ?> 
-                  <li><a href="/post.php">Post Video</a></li>
                   <li><a href="/logout.php">Logout</a></li>
+                  <li><a href="/post.php">Post Video</a></li>
                 <?php else: ?>
                   <li><a href="/login.php">Login</a></li>
                   <li><a href="/registration.php">Register</a></li>
@@ -66,25 +64,51 @@
     <br />
     <div class="container marketing">
      <hr class="featurette-divider">
-     
-     <center>
-     <h1>Piano Cat</h1>
-     <video src="/media/piano_cat.mp4" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
-
-  <script>
-    $( document ).ready(function() {
-        var v = document.getElementsByTagName("video")[0];
-        new MediaElement(v, {success: function(media) {
-            media.play();
-        }});
-    });
-  </script>
-      </center>
-      <!-- FOOTER -->
-      <hr class="featurette-divider">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; <?php echo date("Y"); ?> Completely Digital Clips &middot; <a href="/privacy.php">Privacy</a> &middot; <a href="/terms.php">Terms</a></p>
+     <h1>Post Video</h1>
+     <script>
+        function checkPostVideo(){
+            if (document.postvideo.title.value.length==0){
+                alert("Please enter title!");
+                return false;
+            }
+            if(document.postvideo.description.value.length==0){
+                alert("Please enter description!");
+                return false;
+            }
+            if(document.postvideo.video.value.length==0){
+                alert("Please select a video to upload!");
+                return false;
+            }
+            return true;
+         }
+     </script>
+     <br />
+     <font face="verdana" color="red">
+     <?php 
+        if(isset($_GET["message"])) {
+          echo "<p>Post Failed</p>";
+          echo "<p>" . $_GET["message"] . "</p>";
+        }
+     ?>
+     </font>
+     <form name=postvideo action="upload.php" method="post" enctype="multipart/form-data" onSubmit="return checkPostVideo();">
+       <label for="title">Title</label><br />
+       <input type="text" name="title"><br />
+       <br />
+       <label for="description">Description</label><br />
+       <textarea name="description" id="description"></textarea>
+       <br />
+       <br />
+       <label for="video">Video File</label><br />
+       <input type="file" name="video" id="video">
+       <br />
+       <input value="Post" type="submit">
+     </form>
+     <br />
+     <!-- FOOTER -->
+     <hr class="featurette-divider">
+     <footer>
+       <p>&copy; <?php echo date("Y"); ?> Completely Digital Clips &middot; <a href="/privacy.php">Privacy</a> &middot; <a href="/terms.php">Terms</a></p>
       </footer>
     </div>
   </body>
