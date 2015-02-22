@@ -79,9 +79,10 @@
        <input type="text" name="title"><br />
        <br />
        <label for="description">Description</label><br />
+       <br />
        <textarea name="description"></textarea>
        <br />
-       <input type="file" name="file-upload" id="file-upload">
+       <input type="file" name="video" id="video">
        <br />
        <input value="Post" type="submit">
      </form>
