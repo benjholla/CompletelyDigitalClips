@@ -17,7 +17,10 @@ if ($_FILES["video"]["name"] == "") {
         $error = "Only files <= 25ΜΒ.";
         echo $error;
      } else {
+        echo $_FILES["video"]["type"];
+        echo "Moving file...";
         move_uploaded_file($_FILES["video"]["tmp_name"], $targetDir . $_FILES["video"]["name"]);
+        echo "Moved file to: " . $targetDir . $_FILES["video"]["name"];
      }
   }
 ?>
