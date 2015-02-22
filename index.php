@@ -68,17 +68,8 @@
      <hr class="featurette-divider">
      
      <center>
-     <h1>Piano Cat</h1>
-     <video src="/media/piano_cat.mp4" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
-
-  <script>
-    $( document ).ready(function() {
-        var v = document.getElementsByTagName("video")[0];
-        new MediaElement(v, {success: function(media) {
-            media.play();
-        }});
-    });
-  </script>
+     <h1>Coming Soon.</h1>
+     
       </center>
       <!-- FOOTER -->
       <hr class="featurette-divider">

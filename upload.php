@@ -1,11 +1,10 @@
 <?php
 
-// open connection to the database
 include 'config.php';
-include 'opendb.php';
-
-// session utils
 include 'sessions.php';
+
+// open connection to the database
+include 'opendb.php';
 
 function generateShortName($length = 11) {
     return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
@@ -15,11 +14,16 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   // get and rename file upload
   $shortname = generateShortName();
   $filename = $shortname . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
-  while(file_exists("$baseDir/$targetDir/$filename")){
+  while(file_exists("$uploadDir/$filename")){
     $shortname = generateShortName();
     $filename = $shortname . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
   }
-  move_uploaded_file($_FILES["video"]["tmp_name"], "$baseDir/$targetDir/$filename");
+  move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
+
+  // check upload success
+  if(!file_exists("$uploadDir/$filename")){
+    header("Location: /post.php?message=" . urlencode("Upload failed."));
+  }
 
   // check upload file size is not greater than 100 megabytes
   if($_FILES["video"]["size"] > 12500000) {

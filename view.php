@@ -6,11 +6,37 @@ include 'config.php';
 include 'opendb.php';
 
 $clip = NULL;
-$mediaDir = $targetDir;
-$video = $_GET["video"];
+$media = $mediaDir;
+$shortname = $_GET["video"];
 foreach ($validMediaExtensions as $ext){
-  if(file_exists("$baseDir/$targetDir/$video.$ext")){
-    $clip = "$video.$ext";
+  if(file_exists("$uploadDir/$shortname.$ext")){
+    $clip = "$shortname.$ext";
+  }
+}
+
+$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+$shareURL = "$root" . "view.php?video=" . $shortname;
+
+if($clip != NULL){
+  try {
+    // get clip properties
+    $clipResult = mysql_query("SELECT title, description, posted, user, views FROM clips WHERE shortname='" . $shortname . "'");
+    $clipRow = mysql_fetch_row($clipResult);
+    $title = $clipRow[0];
+    $description = $clipRow[1];
+    $posted = $clipRow[2];
+    $userID = $clipRow[3];
+    $views = $clipRow[4];
+
+    // get username
+    $userResult = mysql_query("SELECT username FROM users WHERE id='" . $userID . "'");
+    $userRow = mysql_fetch_row($userResult);
+    $username = $userRow[0];
+
+    // update view counter
+    mysql_query("UPDATE clips SET views=views+1 WHERE shortname='" . $shortname . "'");
+  } catch (Exception $e) {
+    $clip = NULL;
   }
 }
 ?>
@@ -79,19 +105,39 @@ foreach ($validMediaExtensions as $ext){
     <br />
     <div class="container marketing">
      <hr class="featurette-divider">
-     
      <center>
      <?php if($clip): ?>
-     <h1>Piano Cat</h1>
-     <video src="<?php echo "$mediaDir/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
+     <h1><?php echo $title ?></h1>
+     <video src="<?php echo "$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
+     <br />
+     <div style="max-width: 640px;">
+       <div style="float: left;">
+         <label for="description" style="float: left;">Description</label><br />
+         <textarea rows="7" cols="60" name="description" disabled style="resize: none;"><?php echo $description ?></textarea>
+       </div>
+       <div style="float: right;">
+         <br />
+         <pre><b>Views: <?php echo $views ?></b></pre>
+         <pre><b>Posted by: <a href="<?php echo $username ?>"><?php echo $username ?></a></b></pre>
+         <label for="share" style="float: left;">Share URL</label><br />
+         <input type="text" name="share" value="<?php echo $shareURL ?>" disabled><br />
+       </div>
+     </div>
      <script>
 	    $(document).ready(function() {
 		var v = document.getElementsByTagName("video")[0];
 		new MediaElement(v, {success: function(media) {
+                    <?php 
+                      if(isset($_GET["t"])){
+                        $seconds = $_GET["t"];
+                        echo "media.setCurrentTime($seconds);";
+                      }
+                    ?>
 		    media.play();
 		}});
 	    });
       </script>
+      <br /><br /><br /><br /><br /><br />
       <?php else: ?>
       <h1>Sorry, we couldn't find that clip :(</h1>
       <?php endif; ?>
