@@ -1,30 +1,34 @@
 <?php
+
+include 'config.php';
+
 function generateShortName($length = 11) {
     return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
 
-$targetDir = "./media/";
-if ($_FILES["video"]["name"] == "") {
-     $error = "No video imported.";
-     echo $error;
-  } else {
-     if (file_exists($targetDir . $_FILES["video"]["name"])) {
-        $error = "The file already exists.";
-        echo $error;
-     } 
-//     else if ($_FILES["video"]["type"] != "video/mp4") {
-//        $error = "File format not supported.";
-//        echo $_FILES["video"]["type"];
-//        echo $error;
-//     } 
-     else if ($_FILES["video"]["size"] > 26214400) {
-        $error = "Only files <= 25ΜΒ.";
-        echo $error;
-     } else {
-        echo $_FILES["video"]["type"];
-        echo "Moving file...\n";
-        move_uploaded_file($_FILES["video"]["tmp_name"], $targetDir . generateShortName());
-        echo "Moved file to: " . $targetDir . generateShortName();
-     }
+var_dump($_FILES["video"]);
+
+$validMedia = array("video/mp4", "video/ogg", "video/webm");
+
+$targetDir = "/var/www/html/media";
+if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
+
+  $filename = generateShortName() . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
+//  while(file_exists("$targetDir/$filename"){
+//    $filename = generateShortName() . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
+//  }
+  $tmp_name = $_FILES["video"]["tmp_name"];
+  move_uploaded_file($tmp_name, "$targetDir/$filename");
+
+  if($_FILES["video"]["size"] > 12500000) {
+    header('Location: /post-video.php?message="Only%20files%20<=%20100%20ΜΒ.');
   }
+
+  if(in_array($_FILES["video"]["type"], $validMedia)) {
+    header('Location: /post-video.php?message=File%20format%20not%20supported.');
+  }
+  header('Location: /media');
+} else {
+  echo "No video imported.";
+}
 ?>
