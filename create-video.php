@@ -1,10 +1,14 @@
 <?php
-$targetDir = "media/";
+function generateShortName($length = 11) {
+    return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+}
+
+$targetDir = "./media/";
 if ($_FILES["video"]["name"] == "") {
      $error = "No video imported.";
      echo $error;
   } else {
-     if (file_exists("uploads/" . $_FILES["video"]["name"])) {
+     if (file_exists($targetDir . $_FILES["video"]["name"])) {
         $error = "The file already exists.";
         echo $error;
      } 
@@ -18,9 +22,9 @@ if ($_FILES["video"]["name"] == "") {
         echo $error;
      } else {
         echo $_FILES["video"]["type"];
-        echo "Moving file...";
-        move_uploaded_file($_FILES["video"]["tmp_name"], $targetDir . $_FILES["video"]["name"]);
-        echo "Moved file to: " . $targetDir . $_FILES["video"]["name"];
+        echo "Moving file...\n";
+        move_uploaded_file($_FILES["video"]["tmp_name"], $targetDir . generateShortName());
+        echo "Moved file to: " . $targetDir . generateShortName();
      }
   }
 ?>
