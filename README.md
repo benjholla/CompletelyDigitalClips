@@ -19,8 +19,11 @@ This is an intentionally insecure web app!  It goes without saying that this sho
 ## Configure PHP
 
 Edit `/etc/php5/apache2/php.ini`
+
 Set `file_uploads = On`
+
 Set `upload_max_filesize = 100M`
+
 Set `post_max_size = 100M`
 
 ## Checkout Source
