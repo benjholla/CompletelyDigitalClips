@@ -16,6 +16,16 @@ This is an intentionally insecure web app!  It goes without saying that this sho
 
 `sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt`
 
+## Configure PHP
+
+Edit `/etc/php5/apache2/php.ini`
+
+Set `file_uploads = On`
+
+Set `upload_max_filesize = 100M`
+
+Set `post_max_size = 100M`
+
 ## Checkout Source
 
 `git clone https://github.com/benjholla/BadYoutubeClone.git`
