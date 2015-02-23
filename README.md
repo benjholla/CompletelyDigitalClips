@@ -1,4 +1,4 @@
-# BadYoutubeClone
+# CompletelyDigitalClips
 A bad clone of YouTube in PHP for learning to hack
 
 This is an intentionally insecure web app!  It goes without saying that this should never be used in any sort of production environment.
