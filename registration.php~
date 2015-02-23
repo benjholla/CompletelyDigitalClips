@@ -10,10 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.png">
 
-    <title>Completely Digital Clips - Login</title>
+    <title>Completely Digital Clips</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
@@ -61,35 +60,47 @@
      <hr class="featurette-divider">
      <h1>Login</h1>
      <script>
-        function checkLogin(){
-            if (document.login.email.value.length==0){
+        function checkRegistration(){
+            if (document.registration.email.value.length==0){
                 alert("Please enter email!");
                 return false;
             }
-            if(document.login.password.value.length==0){
+            if(document.registration.password.value.length==0){
                 alert("Please enter password!");
+                return false;
+            }
+            if(document.registration.confirm-password.value.length==0){
+                alert("Passwords do not match!");
                 return false;
             }
             return true;
          }
      </script>
      <br />
+     <font face="verdana" color="red">
      <?php 
         if(isset($_GET["message"])) {
-          echo $_GET["message"]; 
+          echo "<p>Registration Failed</p>";
+          echo "<p>" . $_GET["message"] . "</p>";
         }
-     ?> 
-     <form name=login action="authenticate.php" method="post" onSubmit="return checkLogin();">
+     ?>
+     </font>
+     <form name=registration action="register.php" method="post" onSubmit="return checkRegistration();">
        <label for="email">Email</label><br />
        <input type="email" name="email"><br />
+       <br />
+       <label for="username">Username (display name)</label><br />
+       <input name="username"><br />
        <br />
        <label for="password">Password</label><br />
        <input name="password" type="password"><br />
        <br />
-       <input value="Login" type="submit">
+       <label for="confirm-password">Confirm Password</label><br />
+       <input name="confirm-password" type="password"><br />
+       <br />
+       <input value="Register" type="submit">
      </form>
      <br />
-     <center>Remember, never tell anyone your password!</center>
      <!-- FOOTER -->
      <hr class="featurette-divider">
      <footer>

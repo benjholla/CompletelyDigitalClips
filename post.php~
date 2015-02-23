@@ -10,10 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.png">
 
-    <title>Completely Digital Clips - Login</title>
+    <title>Completely Digital Clips</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
@@ -49,7 +48,13 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href="/index.php">Home</a></li>
-                <li><a href="/login.php">Login</a></li>
+                <?php if(isset($_COOKIE["PHPSESSID"])): ?> 
+                  <li><a href="/logout.php">Logout</a></li>
+                  <li><a href="/post.php">Post Video</a></li>
+                <?php else: ?>
+                  <li><a href="/login.php">Login</a></li>
+                  <li><a href="/registration.php">Register</a></li>
+                <?php endif; ?>
               </ul>
             </div>
           </div>
@@ -59,37 +64,47 @@
     <br />
     <div class="container marketing">
      <hr class="featurette-divider">
-     <h1>Login</h1>
+     <h1>Post Video</h1>
      <script>
-        function checkLogin(){
-            if (document.login.email.value.length==0){
-                alert("Please enter email!");
+        function checkPostVideo(){
+            if (document.postvideo.title.value.length==0){
+                alert("Please enter title!");
                 return false;
             }
-            if(document.login.password.value.length==0){
-                alert("Please enter password!");
+            if(document.postvideo.description.value.length==0){
+                alert("Please enter description!");
+                return false;
+            }
+            if(document.postvideo.video.value.length==0){
+                alert("Please select a video to upload!");
                 return false;
             }
             return true;
          }
      </script>
      <br />
+     <font face="verdana" color="red">
      <?php 
         if(isset($_GET["message"])) {
-          echo $_GET["message"]; 
+          echo "<p>Post Failed</p>";
+          echo "<p>" . $_GET["message"] . "</p>";
         }
-     ?> 
-     <form name=login action="authenticate.php" method="post" onSubmit="return checkLogin();">
-       <label for="email">Email</label><br />
-       <input type="email" name="email"><br />
+     ?>
+     </font>
+     <form name=postvideo action="upload.php" method="post" enctype="multipart/form-data" onSubmit="return checkPostVideo();">
+       <label for="title">Title</label><br />
+       <input type="text" name="title"><br />
        <br />
-       <label for="password">Password</label><br />
-       <input name="password" type="password"><br />
+       <label for="description">Description</label><br />
+       <textarea name="description" id="description"></textarea>
        <br />
-       <input value="Login" type="submit">
+       <br />
+       <label for="video">Video File</label><br />
+       <input type="file" name="video" id="video">
+       <br />
+       <input value="Post" type="submit">
      </form>
      <br />
-     <center>Remember, never tell anyone your password!</center>
      <!-- FOOTER -->
      <hr class="featurette-divider">
      <footer>

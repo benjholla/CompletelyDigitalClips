@@ -51,7 +51,7 @@ if($clip != NULL){
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>Completely Digital Clips<?php if($clip != NULL){echo " - $title";} ?></title>
+    <title>Completely Digital Clips - Test</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
