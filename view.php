@@ -134,7 +134,6 @@ if($clip != NULL){
 		}});
 	    });
       </script>
-      <br /><br /><br /><br /><br /><br />
       <?php else: ?>
       <h1>Sorry, we couldn't find that clip :(</h1>
       <?php endif; ?>
