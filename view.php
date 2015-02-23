@@ -110,17 +110,14 @@ if($clip != NULL){
      <h1><?php echo $title ?></h1>
      <video src="<?php echo "$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
      <br />
-     <div style="max-width: 640px;">
-       <div style="float: left;">
-         <label for="description" style="float: left;">Description</label><br />
-         <textarea rows="7" cols="60" name="description" disabled style="resize: none;"><?php echo $description ?></textarea>
+     <div style="max-width: 640px; height: 150px;">
+       <div style="float: left; max-width: 420px; width: 100%; height: 100%;">
+         <pre style="text-align: left; height: 100%;"><?php echo $description ?></pre>
        </div>
-       <div style="float: right;">
-         <br />
+       <div style="float: left; margin-left: 20px; max-width: 200px; width: 100%;">
          <pre><b>Views: <?php echo $views ?></b></pre>
-         <pre><b>Posted by: <a href="<?php echo $username ?>"><?php echo $username ?></a></b></pre>
-         <label for="share" style="float: left;">Share URL</label><br />
-         <input type="text" name="share" value="<?php echo $shareURL ?>" disabled><br />
+         <pre><b>Posted by: <a href="/user.php?username=<?php echo $username ?>"><?php echo $username ?></a></b></pre>
+         <b>Share&nbsp;</b><input type="text" name="share" value="<?php echo $shareURL ?>" disabled><br />
        </div>
      </div>
      <script>
