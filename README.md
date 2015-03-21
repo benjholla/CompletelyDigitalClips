@@ -9,7 +9,7 @@ Run `sudo apt-get update`
 
 Run `sudo apt-get install mysql-server`
 
-Optionally [install phpMyAdmin](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-12-04)
+To optionally [install phpMyAdmin](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-12-04) perform the following:
 
 Run `sudo apt-get install apache2`
 
