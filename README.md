@@ -38,3 +38,7 @@ Run `sudo apt-get install apache2`
 Run `sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt php5-mysql libapache2-mod-auth-mysql`
 
 Run `sudo apt-get install phpmyadmin apache2-utils`
+
+# Setup Load Balancer
+
+Run `sudo apt-get install haproxy`
