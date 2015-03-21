@@ -100,3 +100,5 @@ Add the following:
 	    option httpclose
 	    option forwardfor
 	    server database 192.168.1.105:80 check
+
+Run `sudo service haproxy start` or `sudo service haproxy restart`
