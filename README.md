@@ -19,6 +19,8 @@ Run `sudo apt-get install phpmyadmin apache2-utils`
 
 ## Setup Application Servers
 
+For each server perform the following:
+
 Run `sudo apt-get update`
 
 Run `sudo apt-get install git`
