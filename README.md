@@ -23,7 +23,7 @@ Add `Include /etc/phpmyadmin/apache.conf` at the end of the file.
 
 Run `sudo service apache2 restart`
 
-Check that you can access `http://localhost/phpmyadmin`
+Check that you can access [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 
 ## Setup Application Servers
 
