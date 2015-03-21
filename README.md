@@ -27,7 +27,7 @@ Check that you can access [http://localhost/phpmyadmin](http://localhost/phpmyad
 
 ## Setup Application Servers
 
-For each server perform the following:
+For each application server perform the following:
 
 Run `sudo apt-get update`
 
