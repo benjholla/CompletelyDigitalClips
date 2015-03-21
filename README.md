@@ -41,4 +41,6 @@ Run `sudo apt-get install phpmyadmin apache2-utils`
 
 # Setup Load Balancer
 
+The load balancer is powered by [HAProxy](https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-http-load-balancing-on-an-ubuntu-vps).
+
 Run `sudo apt-get install haproxy`
