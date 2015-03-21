@@ -1,9 +1,9 @@
-# CompletelyDigitalClips
+# Completely Digital Clips
 A bad clone of YouTube in PHP for learning to hack
 
 This is an intentionally insecure web app!  It goes without saying that this should never be used in any sort of production environment.
 
-# Setup Database Server
+## Setup Database Server
 
 Run `sudo apt-get update`
 
@@ -17,7 +17,7 @@ Run `sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt php5-mysql libapa
 
 Run `sudo apt-get install phpmyadmin apache2-utils`
 
-# Setup Application Servers
+## Setup Application Servers
 
 Run `sudo apt-get update`
 
@@ -39,7 +39,7 @@ Checkout application source
 
 `git clone https://github.com/benjholla/BadYoutubeClone.git`
 
-# Setup Load Balancer
+## Setup Load Balancer
 
 The load balancer is powered by [HAProxy](https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-http-load-balancing-on-an-ubuntu-vps).
 
