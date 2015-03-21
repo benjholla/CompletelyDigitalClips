@@ -56,3 +56,47 @@ The load balancer is powered by [HAProxy](https://www.digitalocean.com/community
 Run `sudo apt-get update`
 
 Run `sudo apt-get install haproxy`
+
+Edit `/etc/default/haproxy`
+
+Set `ENABLED=1`
+
+Run `sudo mv /etc/haproxy/haproxy.cfg{,.original}`
+
+Create `/etc/haproxy/haproxy.cfg`
+
+Add the following:
+
+	global
+	    log 127.0.0.1 local0 notice
+	    maxconn 2000
+	    user haproxy
+	    group haproxy
+	
+	defaults
+	    log     global
+	    mode    http
+	    option  httplog
+	    option  dontlognull
+	    retries 3
+	    option redispatch
+	    timeout connect  5000
+	    timeout client  10000
+	    timeout server  10000
+	
+	listen video_servers 0.0.0.0:80
+	    stats enable
+	    stats uri /stats
+	    balance roundrobin
+	    option httpclose
+	    option forwardfor
+	    server video1 192.168.1.76:80 check
+	    server video2 192.168.1.21:80 check
+	
+	listen database 0.0.0.0:8080
+	    stats enable
+	    stats uri /stats
+	    balance roundrobin
+	    option httpclose
+	    option forwardfor
+	    server database 192.168.1.105:80 check
