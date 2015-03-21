@@ -65,7 +65,7 @@ Run `sudo mv /etc/haproxy/haproxy.cfg{,.original}`
 
 Create `/etc/haproxy/haproxy.cfg`
 
-Add the following:
+Add the following (replacing the IP addresses with the correct IPs of your machines):
 
 	global
 	    log 127.0.0.1 local0 notice
