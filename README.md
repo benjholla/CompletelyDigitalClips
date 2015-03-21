@@ -17,6 +17,14 @@ Run `sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt php5-mysql libapa
 
 Run `sudo apt-get install phpmyadmin apache2-utils`
 
+Edit `/etc/apache2/apache2.conf`
+
+Add `Include /etc/phpmyadmin/apache.conf` at the end of the file.
+
+Run `sudo service apache2 restart`
+
+Check that you can access `http://localhost/phpmyadmin`
+
 ## Setup Application Servers
 
 For each server perform the following:
