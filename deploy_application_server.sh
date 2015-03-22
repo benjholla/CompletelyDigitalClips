@@ -3,13 +3,11 @@
 # clear the screen
 clear
 
-# reset any changes in the git repo to head of master and remove untracked files
+# reset any changes in the git repo to head of master and remove untracked files and pull updates from master repo
 echo "Resetting source repository..."
 git reset --hard
 git clean -x -f
-
-echo "Pulling latest source..."
-git pull
+git pull https://github.com/benjholla/CompletelyDigitalClips.git master
 
 # set the application server host name in the configuration template file
 printf "\nType the host name of this application server (ex: video1, video2, etc.) followed by [ENTER]:\n"
