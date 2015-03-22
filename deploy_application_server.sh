@@ -8,6 +8,9 @@ echo "Resetting source repository..."
 git reset --hard
 git clean -x -f
 
+echo "Pulling latest source..."
+git pull
+
 # set the application server host name in the configuration template file
 printf "\nType the host name of this application server (ex: video1, video2, etc.) followed by [ENTER]:\n"
 
