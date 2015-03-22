@@ -41,8 +41,8 @@ rm Application/config.php
 mv config_template Application/config.php
 
 # copy and replace the file contents of the application source to the webserver directory
-rm -rf /var/www/html/*
-cp -a Application/. /var/www/html/
+sudo rm -rf /var/www/html/*
+sudo cp -a Application/. /var/www/html/
 
 # all done
-echo "Finished."
+printf "\nFinished.\n"
