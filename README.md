@@ -49,6 +49,10 @@ Checkout application source
 
 `git clone https://github.com/benjholla/BadYoutubeClone.git`
 
+Run deployment script
+
+`./deploy_application_server.sh`
+
 ## Setup Load Balancer
 
 The load balancer is powered by [HAProxy](https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-http-load-balancing-on-an-ubuntu-vps).
