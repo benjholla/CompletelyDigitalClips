@@ -1,8 +1,11 @@
 <?php
+// define application server hostname
+$APPLICATION_HOSTNAME = "video1";
+
 // define host, user, and password
-$dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = 'cdc';
+$DATABASE_HOSTNAME = "database";
+$DATABASE_USERNAME = "root";
+$DATABASE_PASSWORD = "cdc";
 
 // error logging
 ini_set('display_errors',1);
