@@ -10,7 +10,7 @@ git clean -x -f
 git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 git pull origin master
 
-if [ -f /var/www/config.php ]; then
+if [ ! -f /var/www/config.php ]; then
   # set the application server host name in the configuration template file
   printf "\nType the host name of this application server (ex: video1, video2, etc.) followed by [ENTER]:\n"
 
