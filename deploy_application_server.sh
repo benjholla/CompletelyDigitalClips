@@ -7,7 +7,7 @@ clear
 echo "Resetting source repository..."
 git reset --hard
 git clean -x -f
-git pull https://github.com/benjholla/CompletelyDigitalClips.git master
+git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 git pull origin master
 
 if [ -f /var/www/config.php ]; then
