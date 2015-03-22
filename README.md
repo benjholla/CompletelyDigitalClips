@@ -45,6 +45,8 @@ Set `upload_max_filesize = 100M`
 
 Set `post_max_size = 100M`
 
+Run `sudo service apache2 restart`
+
 Checkout application source
 
 `git clone https://github.com/benjholla/BadYoutubeClone.git`
