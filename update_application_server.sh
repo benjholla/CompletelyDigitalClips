@@ -11,8 +11,9 @@ git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/
 git pull origin master
 
 # copy and replace the file contents of the application source to the webserver directory
-sudo rm -rf /var/www/*
-sudo cp -a Application/. /var/www/
+# don't replace config.php file
+sudo rm -rf /var/www/!(config.php)
+sudo cp -a -n Application/. /var/www/
 
 # all done
 printf "\nFinished.\n"
