@@ -9,13 +9,13 @@ git clean -x -f
 git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 git pull origin master
 
-echo "Enter database name: "
+echo "Enter database name (ex: application):"
 read DATABASE_NAME
 
-echo "Enter database username: "
+echo "Enter database username (ex: root):"
 read DATABASE_USERNAME
 
-echo "Enter database password: "
+echo "Enter database password (ex: cdc):"
 read DATABASE_PASSWORD
 
 Q1="CREATE DATABASE IF NOT EXISTS $DATABASE_NAME;"
