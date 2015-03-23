@@ -17,7 +17,9 @@ Run `sudo service mysql restart`
 
 Checkout application source
 
-`git clone https://github.com/benjholla/CompletelyDigitalClips.git`
+Run `sudo apt-get install git`
+
+Run `git clone https://github.com/benjholla/CompletelyDigitalClips.git`
 
 Run database deployment script
 
