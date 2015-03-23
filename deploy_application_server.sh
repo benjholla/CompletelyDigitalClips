@@ -53,5 +53,8 @@ mv config_template Application/config.php
 sudo rm -rf /var/www/*
 sudo cp -a Application/. /var/www/
 
+sudo chmod -R 0755 /var/www/media
+sudo chown www-data:www-data /var/www/media
+
 # all done
 printf "\nFinished.\n"
