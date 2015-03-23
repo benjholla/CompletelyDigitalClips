@@ -18,11 +18,18 @@ read APPLICATION_HOSTNAME
 sed -i "s/APPLICATION_HOSTNAME/\$APPLICATION_HOSTNAME = \"$APPLICATION_HOSTNAME\";/g" config_template
 
 # set the database host name in the configuration template file
-printf "\nType the host name or IP address of the database server (ex: database, localhost, 127.0.0.1) followed by [ENTER]:\n"
+printf "\nType the IP address of the database server (ex: 127.0.0.1 or 192.168.1.105) followed by [ENTER]:\n"
 
-read DATABASE_HOSTNAME
+read DATABASE_IP
 
-sed -i "s/DATABASE_HOSTNAME/\$DATABASE_HOSTNAME = \"$DATABASE_HOSTNAME\";/g" config_template
+sed -i "s/DATABASE_IP/\$DATABASE_IP = \"$DATABASE_IP\";/g" config_template
+
+# set the database name in the configuration template file
+printf "\nType the name of the application database to connect to on the server (ex: application) followed by [ENTER]:\n"
+
+read DATABASE_NAME
+
+sed -i "s/DATABASE_NAME/\$DATABASE_NAME = \"$DATABASE_NAME\";/g" config_template
 
 # set the database username in the configuration template file
 printf "\nType the username of the database SQL account to connect the application server to (ex: root) followed by [ENTER]:\n"

@@ -3,7 +3,7 @@
 $APPLICATION_HOSTNAME = "video1";
 
 // define host, user, and password
-$DATABASE_HOSTNAME = "database";
+$DATABASE_IP = "database";
 $DATABASE_USERNAME = "root";
 $DATABASE_PASSWORD = "cdc";
 
