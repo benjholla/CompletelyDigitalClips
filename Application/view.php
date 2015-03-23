@@ -22,7 +22,7 @@ if($clip != NULL){
     $clipResult = mysql_query("SELECT host, title, description, posted, user, views FROM clips WHERE shortname='" . $shortname . "'");
     $clipRow = mysql_fetch_row($clipResult);
     $host = $clipRow[0];
-    $shareURL = "$host" . "view.php?video=" . $shortname;
+    $shareURL = "$host" . "/view.php?video=" . $shortname;
     $title = $clipRow[1];
     $description = $clipRow[2];
     $posted = $clipRow[3];
@@ -110,7 +110,7 @@ if($clip != NULL){
      <center>
      <?php if($clip): ?>
      <h1><?php echo $title ?></h1>
-     <video src="<?php echo "$host/$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
+     <video src="<?php echo "http://$host/$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
      <br />
      <div style="max-width: 640px; height: 150px;">
        <div style="float: left; max-width: 420px; width: 100%; height: 100%;">
