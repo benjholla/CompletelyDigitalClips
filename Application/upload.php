@@ -57,7 +57,7 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
       $userID = $userRow[0];
 
       // insert video into clips table
-      $insertResult = mysql_query("INSERT INTO clips (shortname, title, description, user) VALUES ('$shortname', '$title', '$description', '$userID')");
+      $insertResult = mysql_query("INSERT INTO clips (host, shortname, title, description, user) VALUES ('$APPLICATION_HOSTNAME', '$shortname', '$title', '$description', '$userID')");
       if ($insertResult) {
         // success! view the video
         header("Location: /view.php?video=" . $shortname);

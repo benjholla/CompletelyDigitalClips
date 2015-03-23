@@ -14,19 +14,20 @@ foreach ($validMediaExtensions as $ext){
   }
 }
 
-$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-$shareURL = "$root" . "view.php?video=" . $shortname;
+
 
 if($clip != NULL){
   try {
     // get clip properties
-    $clipResult = mysql_query("SELECT title, description, posted, user, views FROM clips WHERE shortname='" . $shortname . "'");
+    $clipResult = mysql_query("SELECT host, title, description, posted, user, views FROM clips WHERE shortname='" . $shortname . "'");
     $clipRow = mysql_fetch_row($clipResult);
-    $title = $clipRow[0];
-    $description = $clipRow[1];
-    $posted = $clipRow[2];
-    $userID = $clipRow[3];
-    $views = $clipRow[4];
+    $host = $clipRow[0];
+    $shareURL = "$host" . "view.php?video=" . $shortname;
+    $title = $clipRow[1];
+    $description = $clipRow[2];
+    $posted = $clipRow[3];
+    $userID = $clipRow[4];
+    $views = $clipRow[5];
 
     // get username
     $userResult = mysql_query("SELECT username FROM users WHERE id='" . $userID . "'");
@@ -109,7 +110,7 @@ if($clip != NULL){
      <center>
      <?php if($clip): ?>
      <h1><?php echo $title ?></h1>
-     <video src="<?php echo "$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
+     <video src="<?php echo "$host/$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
      <br />
      <div style="max-width: 640px; height: 150px;">
        <div style="float: left; max-width: 420px; width: 100%; height: 100%;">

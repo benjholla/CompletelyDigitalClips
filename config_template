@@ -15,7 +15,7 @@ ini_set('display_startup_errors',1);
 // media 
 $validMedia = array("video/mp4", "video/ogg", "video/webm");
 $validMediaExtensions = array("mp4", "ogg", "webm");
-$baseDir = "/var/www/html";
+$baseDir = "/var/www";
 $mediaDir = "/media";
-$uploadDir = "/var/www/html/media";
+$uploadDir = "/var/www/media";
 ?> 
