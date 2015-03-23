@@ -9,6 +9,22 @@ Run `sudo apt-get update`
 
 Run `sudo apt-get install mysql-server`
 
+Edit `etc/mysql/my.cnf`
+
+Set `bind-address = 0.0.0.0`
+
+Run `sudo service mysql restart`
+
+Checkout application source
+
+`git clone https://github.com/benjholla/CompletelyDigitalClips.git`
+
+Run database deployment script
+
+`cd CompletelyDigitalClips`
+
+`./create_application_database.sh`
+
 To optionally [install phpMyAdmin](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-12-04) perform the following:
 
 Run `sudo apt-get install apache2`
@@ -51,7 +67,9 @@ Checkout application source
 
 `git clone https://github.com/benjholla/CompletelyDigitalClips.git`
 
-Run deployment script
+Run application deployment script
+
+`cd CompletelyDigitalClips`
 
 `./deploy_application_server.sh`
 
