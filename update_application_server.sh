@@ -12,8 +12,8 @@ git pull origin master
 
 # copy and replace the file contents of the application source to the webserver directory
 # don't replace config.php file
-find /var/www/ -type f -not -name 'config.php' -delete
-find /var/www/ -type d -empty -delete
+sudo find /var/www/ -type f -not -name 'config.php' -delete
+sudo find /var/www/ -type d -empty -delete
 sudo cp -a -n Application/. /var/www/
 
 # all done
