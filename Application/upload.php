@@ -23,26 +23,31 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   // check upload success
   if(!file_exists("$uploadDir/$filename")){
     header("Location: /post.php?message=" . urlencode("Upload failed."));
+    exit();
   }
 
   // check upload file size is not greater than 100 megabytes
   if($_FILES["video"]["size"] > 12500000) {
     header("Location: /post.php?message=" . urlencode("Only files <= 100 ΜΒ."));
+    exit();
   }
 
   // check file type
   if(in_array($_FILES["video"]["type"], $validMedia) != 1) {
     header("Location: /post.php?message=" . urlencode("File format not supported."));
+    exit();
   }
 
   // check title
   if(!isset($_POST["title"])){
     header("Location: /post.php?message=" . urlencode("Missing title."));
+    exit();
   }
 
   // check description
   if(!isset($_POST["description"])){
     header("Location: /post.php?message=" . urlencode("Missing description."));
+    exit();
   }
 
   // save input fields
@@ -61,18 +66,23 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
       if ($insertResult) {
         // success! view the video
         header("Location: /view.php?video=" . $shortname);
+        exit();
       } else {
         header('Location: /post.php?message=' . urlencode(mysql_error($conn)));
+        exit();
       }
     } catch (Exception $e) {
       header("Location: /post.php?message=" . urlencode("Error: " . $e));
+      exit();
     }
   } else {
     header("Location: /post.php?message=" . urlencode("Unauthenticated user."));
+    exit();
   }
 } else {
   // file upload failed
   header("Location: /post.php?message=" . urlencode("No video imported."));
+  exit();
 }
 ?>
 
