@@ -19,7 +19,7 @@ if [ ! -f /var/www/config.php ]; then
   sed -i "s/APPLICATION_HOSTNAME/\$APPLICATION_HOSTNAME = \"$APPLICATION_HOSTNAME\";/g" config_template
 
   # set the database host name in the configuration template file
-  printf "\nType the host name of the database server (ex: database) followed by [ENTER]:\n"
+  printf "\nType the host name or IP address of the database server (ex: database, localhost, 127.0.0.1) followed by [ENTER]:\n"
 
   read DATABASE_HOSTNAME
 
