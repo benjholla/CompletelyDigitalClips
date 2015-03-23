@@ -16,5 +16,8 @@ sudo find /var/www/ -type f -not -name 'config.php' -delete
 sudo find /var/www/ -type d -empty -delete
 sudo cp -a -n Application/. /var/www/
 
+sudo chmod -R 0755 /var/www/media
+sudo chown www-data:www-data /var/www/media
+
 # all done
 printf "\nFinished.\n"
