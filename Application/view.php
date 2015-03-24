@@ -8,13 +8,13 @@ include 'opendb.php';
 $clip = NULL;
 $media = $mediaDir;
 $shortname = $_GET["video"];
-foreach ($validMediaExtensions as $ext){
-  if(file_exists("$uploadDir/$shortname.$ext")){
-    $clip = "$shortname.$ext";
-  }
-}
 
-
+// This check doesn't work on a loadbalanced setup
+//foreach ($validMediaExtensions as $ext){
+//  if(file_exists("$uploadDir/$shortname.$ext")){
+//    $clip = "$shortname.$ext";
+//  }
+//}
 
 if($clip != NULL){
   try {
