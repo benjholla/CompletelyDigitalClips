@@ -1,8 +1,9 @@
 <?php
 // define application server hostname
+WEBSITE_DOMAIN_NAME
 APPLICATION_HOSTNAME
 
-// define host, user, and password
+// define host, database name, username, and password of SQL database
 DATABASE_IP
 DATABASE_NAME
 DATABASE_USERNAME

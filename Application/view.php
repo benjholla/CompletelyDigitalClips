@@ -22,7 +22,7 @@ if($clip != NULL){
     $clipResult = mysql_query("SELECT host, title, description, posted, user, views FROM clips WHERE shortname='" . $shortname . "'");
     $clipRow = mysql_fetch_row($clipResult);
     $host = $clipRow[0];
-    $shareURL = "$host" . "/view.php?video=" . $shortname;
+    $shareURL = "http://" . "$WEBSITE_DOMAIN_NAME" . "/view.php?video=" . $shortname;
     $title = $clipRow[1];
     $description = $clipRow[2];
     $posted = $clipRow[3];

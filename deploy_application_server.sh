@@ -11,6 +11,13 @@ git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/
 git pull origin master
 
 # set the application server host name in the configuration template file
+printf "\nType the domain name of this website server (ex: team1.cdc.com) followed by [ENTER]:\n"
+
+read WEBSITE_DOMAIN_NAME
+
+sed -i "s/WEBSITE_DOMAIN_NAME/\$WEBSITE_DOMAIN_NAME = \"$WEBSITE_DOMAIN_NAME\";/g" config_template
+
+# set the application server host name in the configuration template file
 printf "\nType the host name of this application server (ex: video1, video2, etc.) followed by [ENTER]:\n"
 
 read APPLICATION_HOSTNAME
