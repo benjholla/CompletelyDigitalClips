@@ -50,8 +50,8 @@
               <ul class="nav navbar-nav">
                 <li><a href="/index.php">Home</a></li>
                 <?php if(isset($_COOKIE["PHPSESSID"])): ?> 
-                  <li><a href="/logout.php">Logout</a></li>
                   <li><a href="/post.php">Post Video</a></li>
+                  <li><a href="/logout.php">Logout</a></li>
                 <?php else: ?>
                   <li><a href="/login.php">Login</a></li>
                   <li><a href="/registration.php">Register</a></li>
