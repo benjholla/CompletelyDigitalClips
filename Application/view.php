@@ -9,37 +9,32 @@ $clip = NULL;
 $media = $mediaDir;
 $shortname = $_GET["video"];
 
-// This check doesn't work on a loadbalanced setup
-//foreach ($validMediaExtensions as $ext){
-//  if(file_exists("$uploadDir/$shortname.$ext")){
-//    $clip = "$shortname.$ext";
-//  }
-//}
-
-if($clip != NULL){
-  try {
+try {
     // get clip properties
-    $clipResult = mysql_query("SELECT host, title, description, posted, user, views FROM clips WHERE shortname='" . $shortname . "'");
+    $clipResult = mysql_query("SELECT host, title, description, posted, user, views, extension FROM clips WHERE shortname='" . $shortname . "'");
     $clipRow = mysql_fetch_row($clipResult);
     $host = $clipRow[0];
-    $shareURL = "http://" . "$WEBSITE_DOMAIN_NAME" . "/view.php?video=" . $shortname;
+    $shareURL = "http://$WEBSITE_DOMAIN_NAME/view.php?video=$shortname";
     $title = $clipRow[1];
     $description = $clipRow[2];
     $posted = $clipRow[3];
     $userID = $clipRow[4];
     $views = $clipRow[5];
+    $extension = $clipRow[6];
 
     // get username
     $userResult = mysql_query("SELECT username FROM users WHERE id='" . $userID . "'");
     $userRow = mysql_fetch_row($userResult);
     $username = $userRow[0];
 
+    // set the clip the filename
+    $clip = "$shortname.$extension";
+
     // update view counter
     mysql_query("UPDATE clips SET views=views+1 WHERE shortname='" . $shortname . "'");
   } catch (Exception $e) {
     $clip = NULL;
   }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

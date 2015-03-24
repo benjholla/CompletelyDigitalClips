@@ -13,7 +13,8 @@ function generateShortName($length = 11) {
 if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   // get and rename file upload
   $shortname = generateShortName();
-  $filename = $shortname . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
+  $extension = pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
+  $filename = $shortname . "." . $extension;
   while(file_exists("$uploadDir/$filename")){
     $shortname = generateShortName();
     $filename = $shortname . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
@@ -62,7 +63,7 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
       $userID = $userRow[0];
 
       // insert video into clips table
-      $insertResult = mysql_query("INSERT INTO clips (host, shortname, title, description, user) VALUES ('$APPLICATION_HOSTNAME', '$shortname', '$title', '$description', '$userID')");
+      $insertResult = mysql_query("INSERT INTO clips (host, shortname, title, description, user, extension) VALUES ('$APPLICATION_HOSTNAME', '$shortname', '$title', '$description', '$userID', '$extension')");
       if ($insertResult) {
         // success! view the video
         header("Location: /view.php?video=" . $shortname);
