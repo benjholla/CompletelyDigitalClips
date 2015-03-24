@@ -7,8 +7,8 @@ clear
 echo "Resetting source repository..."
 git reset --hard
 git clean -x -f
-git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 git pull origin master
+git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 
 # set the application server host name in the configuration template file
 printf "\nType the domain name of this website server (ex: team1.cdc.com) followed by [ENTER]:\n"

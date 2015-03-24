@@ -7,8 +7,8 @@ clear
 echo "Resetting source repository..."
 git reset --hard
 git clean -x -f
-git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 git pull origin master
+git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 
 # copy and replace the file contents of the application source to the webserver directory
 # don't replace config.php file
