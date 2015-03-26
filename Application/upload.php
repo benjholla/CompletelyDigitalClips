@@ -50,7 +50,7 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   }
 
   // check file type
-  if(in_array($_FILES["video"]["type"], $validMedia) != 1) {
+  if(in_array($_FILES["video"]["type"], $validMedia) != 1 || in_array($extension, $validMediaExtensions) != 1) {
     header("Location: /post.php?message=" . urlencode("File format not supported."));
     exit();
   }
