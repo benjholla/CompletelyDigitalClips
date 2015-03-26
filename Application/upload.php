@@ -21,7 +21,8 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   }
   move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
 
-  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 \"$uploadDir/$shortname.jpg\"");
+  // test with: sudo ffmpeg -i "/var/www/media/filename.mp4" -ss 00:00:04 -f image2 -s qvga "/var/www/media/filename.png"
+  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 -s qvga \"$uploadDir/$shortname.png\"");
 
   // check upload success
   if(!file_exists("$uploadDir/$filename")){
