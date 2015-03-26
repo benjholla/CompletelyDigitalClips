@@ -5,10 +5,10 @@ clear
 
 # reset any changes in the git repo to head of master and remove untracked files and pull updates from master repo
 echo "Resetting source repository..."
+git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
+git pull origin master
 git reset --hard
 git clean -x -f
-git pull origin master
-git pull https://github.com/benjholla/CompletelyDigitalClips.git master &> /dev/null
 
 # set the application server host name in the configuration template file
 printf "\nType the domain name of this website server (ex: team1.cdc.com) followed by [ENTER]:\n"
