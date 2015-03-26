@@ -21,6 +21,8 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   }
   move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
 
+  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 \"$uploadDir/$shortname.jpg\"");
+
   // check upload success
   if(!file_exists("$uploadDir/$filename")){
     header("Location: /post.php?message=" . urlencode("Upload failed."));
