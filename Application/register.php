@@ -1,5 +1,6 @@
 <?php
 
+include 'headers.php';
 include 'sessions.php';
 include 'config.php';
 
@@ -9,7 +10,6 @@ $username=$_POST["username"];
 $password=$_POST["password"];
 
 // open connection to the database
-
 include 'opendb.php';
 
 // get user data from the users table

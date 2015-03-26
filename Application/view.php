@@ -1,6 +1,6 @@
 <?php
-include 'headers.php';
-include 'config.php';
+  include 'config.php';
+  include 'headers.php';
 
 // open connection to the database
 include 'opendb.php';
@@ -82,7 +82,7 @@ try {
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="#">Completely Digital Clips</a>
-              <!-- Hosted by <?php echo $APPLICATION_HOSTNAME; ?> -->
+              <?php echo "<!-- Hosted by $APPLICATION_HOSTNAME -->"; ?>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">

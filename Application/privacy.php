@@ -1,4 +1,7 @@
-
+<?php
+  include 'config.php';
+  include 'headers.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,7 +46,7 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="#">Completely Digital Clips</a>
-              <!-- Hosted by <?php echo $APPLICATION_HOSTNAME; ?> -->
+              <?php echo "<!-- Hosted by $APPLICATION_HOSTNAME -->"; ?>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
