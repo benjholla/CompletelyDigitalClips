@@ -13,7 +13,7 @@
     // get clip properties
     $userResult = mysql_query("SELECT id, email FROM users WHERE username='" . $username . "'");
 
-    if(mysql_num_rows($clipResult) == 0){
+    if(mysql_num_rows($userResult) == 0){
         $userID = NULL;
     } else {
         $userRow = mysql_fetch_row($userResult);
