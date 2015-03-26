@@ -93,9 +93,9 @@
     <div class="container marketing">
       <hr class="featurette-divider">
       <center>
-      <h1>User Videos</h1>
       <?php
         if($userID){
+          echo "<h1>User Videos</h1>";
           // get user videos
           $clipsResult = mysql_query("SELECT host, title, shortname, posted, views FROM clips WHERE user='" . $userID . "' ORDER BY views DESC, posted DESC");
           $postedClips = FALSE;
