@@ -14,11 +14,13 @@ git clean -x -f
 # don't replace config.php file
 tmpdir=`mktemp -d`
 sudo cp -a -n /var/www/media/. $tmpdir/
-sudo cp /var/www/config.php $tmpdir/config.php
+sudo cp -a -n /var/www/config.php $tmpdir/
+ls -la $tmpdir
 sudo find /var/www/ -type f -delete
 sudo find /var/www/ -type d -empty -delete
 sudo cp $tmpdir/config.php /var/www/config.php
 sudo rm $tmpdir/index.html
+sudo rm $tmpdir/config.php
 sudo cp -a -n Application/. /var/www/
 sudo cp -a -n $tmpdir/. /var/www/media/
 
