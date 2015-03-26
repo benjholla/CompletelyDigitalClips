@@ -114,7 +114,7 @@
             echo "<p>This user hasn't posted any videos :(</p>";
           }
         } else {
-          echo "<p>Sorry we couldn't find that user :(</p>";
+          echo "<h1>Sorry we couldn't find that user :(</h1>";
         }
       ?>
       </center>
