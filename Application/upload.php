@@ -11,36 +11,6 @@ function generateShortName($length = 11) {
 }
 
 if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
-  // get and rename file upload
-  $shortname = generateShortName();
-  $extension = pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
-  $filename = $shortname . "." . $extension;
-  while(file_exists("$uploadDir/$filename")){
-    $shortname = generateShortName();
-    $filename = $shortname . "." . pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
-  }
-  move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
-
-  // check upload file size is not greater than 100 megabytes
-  if($_FILES["video"]["size"] > 12500000) {
-    header("Location: /post.php?message=" . urlencode("Only files <= 100 ΜΒ."));
-    exit();
-  }
-
-  // check upload success
-  if(!file_exists("$uploadDir/$filename")){
-    header("Location: /post.php?message=" . urlencode("Upload failed."));
-    exit();
-  }
-
-  // test with: sudo ffmpeg -i "/var/www/media/filename.mp4" -ss 00:00:04 -f image2 -s qvga "/var/www/media/filename.png"
-  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 -s qvga \"$uploadDir/$shortname.png\"");
-
-  // check file type
-  if(in_array($_FILES["video"]["type"], $validMedia) != 1) {
-    header("Location: /post.php?message=" . urlencode("File format not supported."));
-    exit();
-  }
 
   // check title
   if(!isset($_POST["title"])){
@@ -53,6 +23,44 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
     header("Location: /post.php?message=" . urlencode("Missing description."));
     exit();
   }
+
+  // get filename
+  $filename = $_FILES["video"]["name"];
+
+  // check upload file size is not greater than 100 megabytes
+  if($_FILES["video"]["size"] > 12500000) {
+    header("Location: /post.php?message=" . urlencode("Only files <= 100 ΜΒ."));
+    exit();
+  }
+
+  // move file to upload directory
+  move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
+
+  // check upload success
+  if(!file_exists("$uploadDir/$filename")){
+    header("Location: /post.php?message=" . urlencode("Upload failed."));
+    exit();
+  }
+
+  // generate unique shortname for upload
+  $shortname = generateShortName();
+  $extension = pathinfo($_FILES["video"]["name"], PATHINFO_EXTENSION);
+  while(file_exists("$uploadDir/$shortname.$extension")){
+    $shortname = generateShortName();
+  }
+
+  // check file type
+  if(in_array($_FILES["video"]["type"], $validMedia) != 1) {
+    header("Location: /post.php?message=" . urlencode("File format not supported."));
+    exit();
+  }
+
+  // generate video thumbnail
+  // test with: sudo ffmpeg -i "/var/www/media/filename.mp4" -ss 00:00:04 -f image2 -s qvga "/var/www/media/filename.png"
+  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 -s qvga \"$uploadDir/$shortname.png\"");
+
+  // rename file upload to shortname
+  rename("$uploadDir/$filename", "$uploadDir/$shortname.$extension"); 
 
   // save input fields
   $title = $_POST["title"];
