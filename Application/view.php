@@ -112,9 +112,7 @@ try {
      <center>
      <?php if($clip): ?>
      <h1><?php echo $title ?></h1>
-     <video src="<?php echo "http://$host$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'>
-       <source type="video/<?php echo "$extension" ?>" src="<?php echo "http://$host$media/$clip" ?>" />
-     </video>
+     <video src="<?php echo "http://$host$media/$clip" ?>" width="640" height="390" class="mejs-player" data-mejsoptions='{"alwaysShowControls": true}'></video>
      <br />
      <div style="max-width: 640px; height: 150px;">
        <div style="float: left; max-width: 420px; width: 100%; height: 100%;">
