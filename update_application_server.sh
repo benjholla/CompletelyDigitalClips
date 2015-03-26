@@ -12,11 +12,12 @@ git clean -x -f
 
 # copy and replace the file contents of the application source to the webserver directory
 # don't replace config.php file
-sudo mv /var/www/config.php /tmp/config.php
-sudo find /var/www/ -type f ! -name '*.mp4' ! -name '*.ogg' ! -name '*.webm' -delete ! -name '*.png' -delete
+tmpdir=`mktemp -d`
+sudo mv /var/www/media $tmpdir
+sudo find /var/www/ -type f -delete
 sudo find /var/www/ -type d -empty -delete
-sudo mv /tmp/config.php /var/www/config.php
 sudo cp -a -n Application/. /var/www/
+sudo mv $tmpdir /var/www/media
 
 sudo chmod -R 0755 /var/www/media
 sudo chown www-data:www-data /var/www/media
