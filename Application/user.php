@@ -98,7 +98,9 @@
         if($userID){
           // get user videos
           $clipsResult = mysql_query("SELECT host, title, shortname, posted, views FROM clips WHERE user='" . $userID . "' ORDER BY views DESC, posted DESC");
+          $postedClips = FALSE;
           while($clipsRow = mysql_fetch_row($clipsResult)){
+            $postedClips = TRUE;
             $host = $clipsRow[0];
             $title = $clipsRow[1];
             $shortname = $clipsRow[2];
@@ -108,8 +110,11 @@
             echo "<a href=\"/view.php?video=$shortname\"><img src=\"http://$host$media/$shortname.png\" /></a>";
             echo "<p>$views views since $posted</p><br />";
           }
+          if($postedClips == FALSE){
+            echo "<p>This user hasn't posted any videos :(</p>";
+          }
         } else {
-          echo "<p>This user hasn't posted any videos :(</p>";
+          echo "<p>Sorry we couldn't find that user :(</p>";
         }
       ?>
       </center>
