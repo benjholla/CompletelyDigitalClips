@@ -3,6 +3,14 @@ A bad clone of YouTube in PHP for learning to hack.  This application is load ba
 
 This is an intentionally insecure web app!  It goes without saying that this should never be used in any sort of production environment.
 
+![Teaser Screenshot](teaser.png)
+
+On the Completely Digital Clips service, users will be able to upload, share, and view videos.  In the interests of privacy and security, users must login before they are able to upload videos or view private profile information.  Of the utmost importance is the ability to scale and grow with the increasing amounts of users.
+
+To enable scalability a load balancer accepts and forwards requests to several different copies of the web service (running on machines called application servers).  The different copies of the web service all connect to the same backend database.
+
+![Architecture Diagram](architecture.png)
+
 ## Setup Database Server
 
 Run `sudo apt-get update`
