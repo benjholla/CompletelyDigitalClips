@@ -105,8 +105,8 @@
             $posted = $clipsRow[3];
             $views = $clipsRow[4];
             echo "<h2>$title</h2>";
-            echo "<img href=\"http://$host/$media/$shortname.png\" />";
-            echo "<p>$views since $posted</p><br />";
+            echo "<img href=\"http://$host$media/$shortname.png\" />";
+            echo "<p>$views views since $posted</p><br />";
           }
         } else {
           echo "<p>This user hasn't posted any videos :(</p>";
