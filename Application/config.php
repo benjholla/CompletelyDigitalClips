@@ -1,9 +1,11 @@
 <?php
 // define application server hostname
-$APPLICATION_HOSTNAME = "video1";
+$WEBSITE_DOMAIN_NAME = "team1.cdc.com";
+$APPLICATION_HOSTNAME = "192.168.1.76";
 
-// define host, user, and password
-$DATABASE_IP = "database";
+// define host, database name, username, and password of SQL database
+$DATABASE_IP = "192.168.1.105";
+$DATABASE_NAME = "application";
 $DATABASE_USERNAME = "root";
 $DATABASE_PASSWORD = "cdc";
 
@@ -14,7 +16,8 @@ ini_set('display_startup_errors',1);
 // media 
 $validMedia = array("video/mp4", "video/ogg", "video/webm");
 $validMediaExtensions = array("mp4", "ogg", "webm");
-$baseDir = "/var/www/html";
+$baseDir = "/var/www";
 $mediaDir = "/media";
-$uploadDir = "/var/www/html/media";
-?> 
+$uploadDir = "/var/www/media";
+?>
+
