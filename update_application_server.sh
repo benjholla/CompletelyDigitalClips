@@ -19,7 +19,8 @@ sudo cp -a -n /var/www/config.php $tmpdir/
 ls -la $tmpdir
 sudo find /var/www/ -type f -delete
 sudo find /var/www/ -type d -empty -delete
-sudo cp -a -n $tmpdir/config.php /var/www/config.php
+sudo mv $tmpdir/config.php /var/www/config.php
+echo "mv $tmpdir/config.php /var/www/config.php"
 sudo rm $tmpdir/config.php
 sudo cp -a -n Application/. /var/www/
 sudo cp -a -n $tmpdir/. /var/www/media/
