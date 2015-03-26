@@ -21,8 +21,11 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   }
   move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
 
-  // test with: sudo ffmpeg -i "/var/www/media/filename.mp4" -ss 00:00:04 -f image2 -s qvga "/var/www/media/filename.png"
-  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 -s qvga \"$uploadDir/$shortname.png\"");
+  // check upload file size is not greater than 100 megabytes
+  if($_FILES["video"]["size"] > 12500000) {
+    header("Location: /post.php?message=" . urlencode("Only files <= 100 ΜΒ."));
+    exit();
+  }
 
   // check upload success
   if(!file_exists("$uploadDir/$filename")){
@@ -30,11 +33,8 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
     exit();
   }
 
-  // check upload file size is not greater than 100 megabytes
-  if($_FILES["video"]["size"] > 12500000) {
-    header("Location: /post.php?message=" . urlencode("Only files <= 100 ΜΒ."));
-    exit();
-  }
+  // test with: sudo ffmpeg -i "/var/www/media/filename.mp4" -ss 00:00:04 -f image2 -s qvga "/var/www/media/filename.png"
+  shell_exec("ffmpeg -i \"$uploadDir/$filename\" -ss 00:00:04 -f image2 -s qvga \"$uploadDir/$shortname.png\"");
 
   // check file type
   if(in_array($_FILES["video"]["type"], $validMedia) != 1) {
