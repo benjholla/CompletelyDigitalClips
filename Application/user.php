@@ -98,7 +98,7 @@
         if($userID){
           // get user videos
           $clipsResult = mysql_query("SELECT host, title, shortname, posted, views FROM clips WHERE user='" . $userID . "' ORDER BY views DESC, posted DESC");
-          while($clipsRow = mysql_fetch_assoc($clipsResult)){
+          while($clipsRow = mysql_fetch_row($clipsResult)){
             $host = $clipsRow[0];
             $title = $clipsRow[1];
             $shortname = $clipsRow[2];
