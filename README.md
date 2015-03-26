@@ -73,6 +73,8 @@ Set `post_max_size = 100M`
 
 Run `sudo service apache2 restart`
 
+Run `sudo apt-get install ffmpeg`
+
 Checkout application source
 
 `git clone https://github.com/benjholla/CompletelyDigitalClips.git`
