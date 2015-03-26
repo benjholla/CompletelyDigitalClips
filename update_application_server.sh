@@ -18,11 +18,15 @@ sudo cp -a -n /var/www/media/. $tmpdir/
 sudo cp -a -n /var/www/config.php $tmpdir/
 sudo find /var/www/ -type f -delete
 sudo find /var/www/ -type d -empty -delete
-ls -la $tmpdir
-ls -la /var/www
+
+sudo cp -a -n Application/. /var/www/
+
+sudo ls -la $tmpdir
+sudo ls -la /var/www
+
 sudo mv $tmpdir/config.php /var/www/config.php
 sudo rm $tmpdir/config.php
-sudo cp -a -n Application/. /var/www/
+
 sudo cp -a -n $tmpdir/. /var/www/media/
 
 sudo chmod -R 0755 /var/www/media
