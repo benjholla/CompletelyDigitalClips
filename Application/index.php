@@ -1,6 +1,8 @@
 <?php
   include 'config.php';
   include 'headers.php';
+
+  $media = $mediaDir;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,11 +70,40 @@
     </div>
     <br />
     <div class="container marketing">
-     <hr class="featurette-divider">
-     
-     <center>
-     <h1>Coming Soon.</h1>
-     
+      <hr class="featurette-divider">
+      <center>
+        <h1>Trending Videos</h1>
+        <table style="width:100%;">
+        <?php
+
+        include 'opendb.php';
+
+        $N = 60;
+        // get top N trending videos
+        $clipsResult = mysql_query("SELECT host, title, shortname, posted, views FROM clips ORDER BY views DESC, posted DESC LIMIT $N");
+        if(mysql_num_rows($clipsResult) > 0){
+          $counter = 1;
+          echo "<tr>";
+          while($clipsRow = mysql_fetch_row($clipsResult)){
+            $host = $clipsRow[0];
+            $title = $clipsRow[1];
+            $shortname = $clipsRow[2];
+            $posted = $clipsRow[3];
+            $views = $clipsRow[4];
+            echo "<td align=\"center\"><a href=\"/view.php?video=$shortname\"><h2>$title</h2></a><a href=\"/view.php?video=$shortname\"><img src=\"http://$host$media/$shortname.png\" /></a><p><b>$views views since <i>$posted</i></b></p></td>";
+            if($counter == 3){
+              echo "</tr><tr>";
+              $counter = 1;
+            } else {
+              $counter = $counter + 1;
+            }
+          }
+          echo "</tr>";
+        } else {
+          echo "<h1>Coming soon!</h1>";
+        }
+      ?>
+      </table>
       </center>
       <!-- FOOTER -->
       <hr class="featurette-divider">
