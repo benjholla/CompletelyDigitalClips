@@ -29,7 +29,7 @@ Checkout application source
 
 Run `sudo apt-get install git`
 
-Run `git clone https://github.com/benjholla/CompletelyDigitalClips.git`
+Run `git clone https://github.com/ISEAGE-ISU/itocdc-2015-www.git`
 
 Run database deployment script
 
@@ -79,7 +79,7 @@ Run `sudo apt-get install ffmpeg`
 
 Checkout application source
 
-`git clone https://github.com/benjholla/CompletelyDigitalClips.git`
+`git clone https://github.com/ISEAGE-ISU/itocdc-2015-www.git`
 
 Run application deployment script
 
