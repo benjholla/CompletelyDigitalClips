@@ -43,7 +43,7 @@ Run `git clone https://github.com/ISEAGE-ISU/itocdc-2015-www.git`
 
 Run database deployment script
 
-`cd CompletelyDigitalClips`
+`cd itocdc-2015-www.git`
 
 `./create_application_database.sh`
 
@@ -93,7 +93,7 @@ Checkout application source
 
 Run application deployment script
 
-`cd CompletelyDigitalClips`
+`cd itocdc-2015-www.git`
 
 `./deploy_application_server.sh`
 
