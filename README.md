@@ -29,7 +29,7 @@ Run `mysql -u root -p`
 
 Execute the following queries:
 
-`GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'cdc';`
+`GRANT ALL ON *.* to 'root'@'%' IDENTIFIED BY 'cdc';`
 
 `FLUSH PRIVILEGES;`
 
