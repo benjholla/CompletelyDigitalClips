@@ -25,6 +25,16 @@ Set `bind-address = 0.0.0.0`
 
 Run `sudo service mysql restart`
 
+Run `mysql -u root -p`
+
+Execute the following queries:
+
+`GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'cdc';`
+
+`FLUSH PRIVILEGES;`
+
+`exit`
+
 Checkout application source
 
 Run `sudo apt-get install git`
