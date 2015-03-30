@@ -12,6 +12,12 @@ function generateShortName($length = 11) {
 
 if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
 
+  // check for failed/corrupted post
+  if(!isset($_POST["title"]) && !isset($_POST["title"]) && !isset($_POST["video"])){
+    header("Location: /post.php?message=" . urlencode("Upload failed, check video file."));
+    exit();
+  }
+
   // check title
   if(!isset($_POST["title"])){
     header("Location: /post.php?message=" . urlencode("Missing title."));
