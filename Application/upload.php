@@ -12,18 +12,6 @@ function generateShortName($length = 11) {
 
 if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
 
-  // get filename
-  $filename = $_FILES["video"]["name"];
-
-  // move file to upload directory
-  move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
-
-  // check upload success
-  if(!file_exists("$uploadDir/$filename")){
-    header("Location: /post.php?message=" . urlencode("Upload failed."));
-    exit();
-  }
-  
   // check title
   if(!isset($_POST["title"])){
     header("Location: /post.php?message=" . urlencode("Missing title."));
@@ -33,6 +21,18 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
   // check description
   if(!isset($_POST["description"])){
     header("Location: /post.php?message=" . urlencode("Missing description."));
+    exit();
+  }
+
+  // get filename
+  $filename = $_FILES["video"]["name"];
+
+  // move file to upload directory
+  move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");
+
+  // check upload success
+  if(!file_exists("$uploadDir/$filename")){
+    header("Location: /post.php?message=" . urlencode("Upload failed."));
     exit();
   }
 
