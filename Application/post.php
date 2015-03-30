@@ -68,6 +68,12 @@
      <hr class="featurette-divider">
      <h1>Post Video</h1>
      <script>
+       $('#video').bind('change', function() {
+           if(this.files[0].size > 100*1024*1024){
+             alert("Warning this video file is too large!");
+           }
+       });
+     
         function checkPostVideo(){
             if (document.postvideo.title.value.length==0){
                 alert("Please enter title!");
