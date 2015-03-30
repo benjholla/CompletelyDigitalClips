@@ -25,15 +25,25 @@ Set `bind-address = 0.0.0.0`
 
 Run `sudo service mysql restart`
 
+Run `mysql -u root -p`
+
+Execute the following queries:
+
+`GRANT ALL ON *.* to 'root'@'%' IDENTIFIED BY 'cdc';`
+
+`FLUSH PRIVILEGES;`
+
+`exit`
+
 Checkout application source
 
 Run `sudo apt-get install git`
 
-Run `git clone https://github.com/benjholla/CompletelyDigitalClips.git`
+Run `git clone https://github.com/ISEAGE-ISU/itocdc-2015-www.git`
 
 Run database deployment script
 
-`cd CompletelyDigitalClips`
+`cd itocdc-2015-www.git`
 
 `./create_application_database.sh`
 
@@ -79,11 +89,11 @@ Run `sudo apt-get install ffmpeg`
 
 Checkout application source
 
-`git clone https://github.com/benjholla/CompletelyDigitalClips.git`
+`git clone https://github.com/ISEAGE-ISU/itocdc-2015-www.git`
 
 Run application deployment script
 
-`cd CompletelyDigitalClips`
+`cd itocdc-2015-www.git`
 
 `./deploy_application_server.sh`
 

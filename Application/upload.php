@@ -12,6 +12,12 @@ function generateShortName($length = 11) {
 
 if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
 
+  // check for failed/corrupted post
+  if(!isset($_POST["title"]) && !isset($_POST["title"]) && !isset($_POST["video"])){
+    header("Location: /post.php?message=" . urlencode("Upload failed, check video file."));
+    exit();
+  }
+
   // check title
   if(!isset($_POST["title"])){
     header("Location: /post.php?message=" . urlencode("Missing title."));
@@ -26,12 +32,6 @@ if ($_FILES["video"]["error"] == UPLOAD_ERR_OK) {
 
   // get filename
   $filename = $_FILES["video"]["name"];
-
-  // check upload file size is not greater than 100 megabytes
-  if($_FILES["video"]["size"] > 12500000) {
-    header("Location: /post.php?message=" . urlencode("Only files <= 100 ΜΒ."));
-    exit();
-  }
 
   // move file to upload directory
   move_uploaded_file($_FILES["video"]["tmp_name"], "$uploadDir/$filename");

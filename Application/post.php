@@ -68,6 +68,35 @@
      <hr class="featurette-divider">
      <h1>Post Video</h1>
      <script>
+        function getFilesize(fileid) {
+          try {
+            var fileSize = 0;
+              if(checkIE() != 0) {
+                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
+                var objFile = objFSO.getFile(filePath);
+                var fileSize = objFile.size; //size in kb
+                fileSize = fileSize / 1048576; //size in mb 
+              } else {
+                fileSize = $("#" + fileid)[0].files[0].size //size in kb
+                fileSize = fileSize / 1048576; //size in mb 
+              }
+              return fileSize;
+          } catch (e) {
+            // alert("Error is :" + e);
+          }
+        }
+        
+        function checkIE() {
+          var ua = window.navigator.userAgent;
+          var msie = ua.indexOf("MSIE ");
+          if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){  
+            return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+          } else {
+            return 0;
+          }
+          return false;
+        }
+     
         function checkPostVideo(){
             if (document.postvideo.title.value.length==0){
                 alert("Please enter title!");
@@ -81,6 +110,11 @@
                 alert("Please select a video to upload!");
                 return false;
             }
+            if(getFilesize("video") > 100){
+                alert("Video is too large to upload!");
+                return false;
+            }
+            
             return true;
          }
      </script>
