@@ -1,0 +1,1 @@
+Half points for each successful login.

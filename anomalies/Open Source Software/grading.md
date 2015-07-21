@@ -1,0 +1,1 @@
+Check the link to the fork they submitted.  If there are a reasonable amount of changes in the repository give them full points.  If there are no changes (or only minor changes) ask the team if this is the web app they are running currently.  If they are and actually didn't make any changes then give them full points (they are going to need it).

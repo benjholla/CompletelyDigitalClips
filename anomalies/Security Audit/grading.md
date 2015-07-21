@@ -1,0 +1,1 @@
+Give partial points.  Divide points up into N, where N is the number of issues.  Then give 1/3 of the 1/N points for each of the 3 report requests.

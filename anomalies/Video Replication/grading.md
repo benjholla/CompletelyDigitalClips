@@ -1,0 +1,1 @@
+Find a video, watch and refresh page until the counter is over 100.  Then wait for up to 15 minutes.  Then inspect the HTML source for the origin of the video server the video was served from.  Refresh the page a few times.  It should alternate video servers.

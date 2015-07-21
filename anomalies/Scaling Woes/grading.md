@@ -1,0 +1,3 @@
+Reload the home page several times, check each page request for the required HTML comments.  If the 3 comments are visible give full points.
+
+Alternative check would be to see if the team still has /admin page visible which shows all load balanced servers.  This is not required for the team to have, so if this does not work you should resort to checking the HTML comments.  If the same HTML comment keeps appearing talk with team to see if they changed the load balancer strategy (to something like Least Connections instead of Round Robin).

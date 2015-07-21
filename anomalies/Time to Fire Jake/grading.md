@@ -1,0 +1,1 @@
+Attempt to SSH into video1, video2, www., and database servers.  See Green Team Documentation for instructions.  Deduct 4 points for each server you can log into as Jake (up to 15 points deducted).

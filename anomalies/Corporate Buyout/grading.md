@@ -1,0 +1,1 @@
+Randomly select one of the 500 accounts and test to see if you can log into the website with the account.  Full points if you can.

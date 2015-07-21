@@ -1,0 +1,1 @@
+1/5 of the points for each server that jenni can log into and have every privileges. If a team hasn't provided a way to reach any internal servers (i.e. via RDP), you won't be able to check video1 & 2 and they should be counted as not done.
